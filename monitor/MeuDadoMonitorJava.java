@@ -4,8 +4,8 @@ class MeuDadoMonitor {
     private boolean Ocupado;
     public MeuDadoMonitor() {
 
-        Pronto=false;
-        Ocupado=true;
+        Pronto=true;
+        Ocupado=false;
     }
     public void armazenar(int Dado) {
         while(!Ocupado);
@@ -39,7 +39,7 @@ class ProdutorMonitor implements Runnable {
     }
     public void run() {
         int i;
-        for(i=0;i<5;i++) {
+        for(i=0;i<30;i++) {
             dado.armazenar(i);
             System.out.println ("Produtor usando Monitor: "+i);
             try {
@@ -56,7 +56,7 @@ class ConsumidorMonitor implements Runnable {
         this.dado=dado;
     }
     public void run() {
-        for(int i=0;i<5;i++) {
+        for(int i=0;i<30;i++) {
             System.out.println("Consumidor usando Monitor: "+dado.carregar());
             try {
                 // cochila por um tempo randômico (0 to 0.5 sec)
